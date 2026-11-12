@@ -59,7 +59,12 @@ Libint is open source under the LGPL, so it can be linked into a larger applicat
 
 ## Bibliography
 
-+ A. Asadchev, E. F. Valeev **Efficient vectorized evaluation of Gaussian AO integrals on modern central processing units**, https://arxiv.org/html/2506.12501v1
++ A. Asadchev, E. F. Valeev **Efficient vectorized evaluation of Gaussian AO integrals on modern central processing units**, (2025) https://arxiv.org/html/2506.12501v1
 
-+ B. P. Pritchard, E. Chow, **Horizontal Vectorization of Electron Repulsion Integrals**, Journal of Computational Chemistry 37, 2537–2546 (2016) 
++ A. Asadchev, E. F. Valeev, **3-Center and 4-Center 2-Particle Gaussian AO Integrals on Modern Accelerated Processors**, J. Chem. Phys. 160, 244109 (2024)
 
++ A. Asadchev, E. F. Valeev, **Memory-Efficient Recursive Evaluation of 3-Center Gaussian Integrals**, J. Chem. Theory Comput. 19, 1698–1710 (2023)
+
++ A. Asadchev, E. F. Valeev, **High-Performance Evaluation of High Angular Momentum 4-Center Gaussian Integrals on Modern Accelerated Processors**, J. Phys. Chem. A 127, 10889–10895 (2023)
+
++ D. B. Williams-Young, A. Asadchev, D. T. Popovici, D. Clark, J. Waldrop, T. L. Windus, E. F. Valeev, W. A. De Jong, **Distributed Memory, GPU Accelerated Fock Construction for Hybrid, Gaussian Basis Density Functional Theory**, J. Chem. Phys. 158, 234104 (2023)

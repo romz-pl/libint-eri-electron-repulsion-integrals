@@ -1,6 +1,6 @@
 # libint: Electron Repulsion Integrals (ERI) library
 
-**Libint** is a C++ library for computing molecular integrals over Gaussian basis functions. Its best-known capability is the **electron repulsion integral (ERI)**, the most expensive part of many quantum chemistry calculations. It was developed mainly by Edward F. Valeev and collaborators, and it is widely used as a computational kernel inside larger electronic structure codes rather than as a standalone program.
+**Libint** is a C++ library for computing molecular integrals over Gaussian basis functions. Its best-known capability is the **electron repulsion integral (ERI)**, the most expensive part of many quantum chemistry calculations. It was developed mainly by Edward F. Valeev and collaborators, and it is widely used as a computational kernel inside larger electronic structure codes rather than as a standalone program. [GitHub repository...](https://github.com/evaleev/libint)
 
 ## The integrals it computes
 

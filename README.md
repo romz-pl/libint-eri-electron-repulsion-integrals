@@ -57,6 +57,57 @@ Libint is a dependency of several quantum chemistry packages. Psi4 is among the 
 
 Libint is open source under the LGPL, so it can be linked into a larger application under the terms of that license. Building it requires choosing the maximum angular momentum and the operators you need, since the generated code depends on those choices. Compile times and library size grow with the angular momentum limit, so builds are often tuned to the basis sets in use.
 
+## Exemplary code
+
+Here is a minimal example that computes the overlap integral between two s-type Gaussian shells using Libint 2. It follows the Engine workflow described above.
+
+```cpp
+#include <libint2.hpp>
+#include <iostream>
+#include <vector>
+
+int main() {
+  using namespace libint2;
+
+  // Initialize the library (must be called once before any Engine is used)
+  initialize();
+
+  // Build two s-type shells, each a single primitive with unit contraction.
+  // Shell arguments: exponents, centers, contraction coefficients (angular momentum 0 = s).
+  Shell s1{{0.5}, {{0, {1.0}}}, {{0.0, 0.0, 0.0}}};
+  Shell s2{{0.5}, {{0, {1.0}}}, {{0.0, 0.0, 1.5}}};   // displaced 1.5 bohr along z
+
+  // Overlap engine: one primitive per shell, max angular momentum 2 (enough for s/p/d)
+  Engine engine(Operator::overlap, /*max_nprim=*/1, /*max_l=*/2);
+
+  // Evaluate the (s1 | s2) overlap block
+  const auto& buf = engine.compute(s1, s2);
+
+  if (buf.size() > 0 && buf[0] != nullptr) {
+    std::cout << "Overlap <s1|s2> = " << buf[0][0] << "\n";
+  }
+
+  finalize();
+  return 0;
+}
+```
+
+To build it against an installed Libint 2, something like this works:
+
+```bash
+g++ -std=c++17 example.cc -o example \
+    $(pkg-config --cflags --libs libint2) -lgmp
+```
+
+The core steps are:
+
+1. **`initialize()` and `finalize()`** bracket all Libint usage.
+2. **`Shell`** holds the primitive exponents, the angular momentum and contraction coefficients, and the center.
+3. **`Engine`** is configured for an operator (here `Operator::overlap`), the maximum number of primitives per shell, and the maximum angular momentum. Each thread should own its own Engine.
+4. **`compute()`** returns a buffer of pointers to the computed integrals, which Libint reuses on the next call, so copy values out before computing again.
+
+For an electron repulsion integral, the same pattern applies with `Operator::coulomb`, and `compute()` takes four shells, `(s1 s2 | s3 s4)`. This example is a sketch to show the API shape. Exact signatures, the buffer layout, and build flags vary between Libint versions, so check them against the documentation for the version you install.
+
 ## Bibliography
 
 + A. Asadchev, E. F. Valeev **Efficient vectorized evaluation of Gaussian AO integrals on modern central processing units**, (2025) https://arxiv.org/html/2506.12501v1

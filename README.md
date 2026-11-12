@@ -7,8 +7,14 @@
 In Hartree–Fock, density functional theory, and post-Hartree–Fock methods, the basic objects are integrals over contracted Gaussian-type orbitals (GTOs). For a set of basis functions $\chi_\mu$, the two-electron integrals are
 
 $$
-(\mu\nu|\lambda\sigma) = \int\!\!\int \chi_\mu^*(\mathbf{r}_1)\,\chi_\nu(\mathbf{r}_1)\,\frac{1}{r_{12}}\,\chi_\lambda^*(\mathbf{r}_2)\,\chi_\sigma(\mathbf{r}_2)\, d\mathbf{r}_1\, d\mathbf{r}_2
+(\mu \nu | \lambda \sigma) = \int \int 
+\chi_{\mu}^{ * }(\mathbf{r} _ 1) \chi_{\nu}(\mathbf{r} _ 1) 
+\frac{1}{r_{12}}
+\chi_{\lambda}^{ * }(\mathbf{r} _ 2) \chi_{\sigma}(\mathbf{r} _ 2)
+d\mathbf{r}_1 d\mathbf{r}_2
 $$
+
+
 
 Libint evaluates these for contracted Cartesian Gaussians of arbitrary angular momentum, grouped into shells. It also handles the other one-electron and two-electron operators that electronic structure codes need:
 

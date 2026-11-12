@@ -57,3 +57,9 @@ Libint is a dependency of several quantum chemistry packages. Psi4 is among the 
 
 Libint is open source under the LGPL, so it can be linked into a larger application under the terms of that license. Building it requires choosing the maximum angular momentum and the operators you need, since the generated code depends on those choices. Compile times and library size grow with the angular momentum limit, so builds are often tuned to the basis sets in use.
 
+## Bibliography
+
++ A. Asadchev, E. F. Valeev **Efficient vectorized evaluation of Gaussian AO integrals on modern central processing units**, https://arxiv.org/html/2506.12501v1
+
++ B. P. Pritchard, E. Chow, **Horizontal Vectorization of Electron Repulsion Integrals**, Journal of Computational Chemistry 37, 2537–2546 (2016) 
+
